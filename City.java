@@ -36,4 +36,8 @@ public class City {
     public void addToAirportsInCity(Airport airport) {
         airportsInCity.add(airport);
     }
+
+    public String toString () {
+        return "(" + getCityName() + "," + getCountryName() + ")";
+    }
 }
