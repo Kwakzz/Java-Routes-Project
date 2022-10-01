@@ -68,7 +68,7 @@ public class Files {
         // Latitude, Longitude, Altitude, Timezone, DST (Daylight savings time),
         // Tz database time zone, Type, Source of this data.
         while (airports_read.hasNextLine()) {
-            String airportsTupleAsString = Files.airlines_read.nextLine();
+            String airportsTupleAsString = Files.airports_read.nextLine();
             String[] airportTuple = airportsTupleAsString.split(",");
             City newCity = new City(airportTuple[2], airportTuple[3]);
             airportsHm.put(new Airport(airportTuple[0], airportTuple[1], newCity), newCity);
