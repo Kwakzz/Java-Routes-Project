@@ -18,11 +18,22 @@ public class Run {
 
     // ----- METHOD FOR CHECKING IF CITY IS THE SET DESTINATION -----
 
+    /**
+     * @param cityName is the name of city we're verifying as the destination
+     * @return true if destination has been found.
+     */
     public static boolean foundDestination (String cityName) {
         return cityName.equals(stopCity.getCityName());
     }
 
     // ----- METHOD FOR DISPLAYING PATH AND WRITING IT TO A FILE -----
+
+    /**
+     * displays flight route in console and in a file.
+     * @param airport is the destination airport
+     * @return an array of the start city and various stops during the flight
+     * @throws FileNotFoundException
+     */
     public static String setPath (Airport airport) throws FileNotFoundException {
         ArrayList <Airport> airportsAlongRoute = new ArrayList<>();
 
@@ -39,13 +50,13 @@ public class Run {
         }
         System.out.printf("Number of flights: %d\n", airportsAlongRoute.size()-1);
 
-        PrintWriter printWriter = new PrintWriter(new FileOutputStream("output.txt"));
+        PrintWriter printWriter = new PrintWriter(new FileOutputStream(startCity.getCityName() + "-" + stopCity.getCityName() +"_output.txt"));
         for (int i = airportsAlongRoute.size()-1; i>=1; i--) {
             printWriter.write(airportsAlongRoute.get(i-1).getSourceAirportAirline().getAirlineCode() + " from " +
                     airportsAlongRoute.get(i).getAirportCode() + " to " + airportsAlongRoute.get(i-1).getAirportCode()
                     + " " + airportsAlongRoute.get(i-1).getSourceAirportAirline().getNoOfStops() + " stops\n");
         }
-        printWriter.write("Number of flights: " + Integer.toString(airportsAlongRoute.size()-1));
+        printWriter.write("Number of flights: " + (airportsAlongRoute.size() - 1));
         printWriter.close();
 
         Collections.reverse(airportsAlongRoute);
@@ -55,6 +66,10 @@ public class Run {
 
     // ----- METHOD FOR READING START LOCATION AND DESTINATION FROM INPUT FILE -----
 
+    /**
+     * @param inputFile contains the starting point and the destination
+     * @throws FileNotFoundException
+     */
     public static void getStartAndDestination (File inputFile) throws FileNotFoundException {
         // File is read from as a stream
         FileInputStream inputStream = new FileInputStream(inputFile);
@@ -70,11 +85,14 @@ public class Run {
 
     // ----- READING FROM DATA FILES TO FIND VALID ROUTE -----
 
+    /**
+     * reads data from files and searches for destination.
+     * @throws FileNotFoundException
+     */
     public static void readFromDataFiles() throws FileNotFoundException {
 
         startCities.add(startCity);
         cityBeingExplored = startCities.get(0);
-        int i = 0;
 
         while (destination.size() == 0) {
 
@@ -173,7 +191,7 @@ public class Run {
                             if (exploredAirports.contains(destinationAirport))
                                 airport.destinationAirportsHm.remove(airportTuple[0]);
                             if (foundDestination(destinationAirport.getCityOfAirport().getCityName())) {
-                                System.out.println("\n\nFound route!");
+                                System.out.println("\nFound route!");
                                 destination.add(destinationAirport.getCityOfAirport());
                                 System.out.printf("You've arrived at %s, %s from %s, %s\n",destinationAirport.getAirportName(), destinationAirport.getCityOfAirport().getCityName()
                                 , startCity.getAirportsInCity().get(0).getAirportName(), startCity.getCityName());
@@ -193,10 +211,11 @@ public class Run {
                 }
             }
 
-            System.out.printf("\n%s destination airports: ", cityBeingExplored.getCityName());
-            for (Airport airport: cityBeingExplored.airportsInCityHm.keySet())
-                for (Airport destinationAirport: airport.destinationAirportsHm.values())
-                    System.out.println(destinationAirport);
+            // print destination airports of city being explored
+//            System.out.printf("\n%s destination airports: ", cityBeingExplored.getCityName());
+//            for (Airport airport: cityBeingExplored.airportsInCityHm.keySet())
+//                for (Airport destinationAirport: airport.destinationAirportsHm.values())
+//                    System.out.println(destinationAirport);
 
             startCities.remove(0);
 
@@ -206,16 +225,15 @@ public class Run {
                     break;
                 }
 
+            // print out the cities yet to be explored. You can comment this out to reduce runtime.
+            // System.out.println(Arrays.toString(startCities.toArray()));
 
-
-
-            System.out.println(Arrays.toString(startCities.toArray()));
-
+            // print out city to be explored
             for (Airport airport: cityBeingExplored.getAirportsInCity())
-                System.out.printf("City being explored: %s: %s",cityBeingExplored.getCityName(), airport.getAirportName());
+                System.out.printf("City being explored: %s: %s\n",cityBeingExplored.getCityName(), airport.getAirportName());
 
-            i++;
         }
+
         if (destination.isEmpty())
             System.out.println("\nNo route found");
 
