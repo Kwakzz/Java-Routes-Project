@@ -9,9 +9,9 @@ public class Files {
     public Files() throws FileNotFoundException {
     }
 
-    static String airlinesFilePath = "/Users/kwakuosafo/Desktop/Kwaku/Ashesi/SECOND YEAR/Intermediate Computer Programming/Code/ICP Individual Project/src/airlines.csv";
-    static String airportsFilePath = "/Users/kwakuosafo/Desktop/Kwaku/Ashesi/SECOND YEAR/Intermediate Computer Programming/Code/ICP Individual Project/src/airports.csv";
-    static String routesFilePath = "/Users/kwakuosafo/Desktop/Kwaku/Ashesi/SECOND YEAR/Intermediate Computer Programming/Code/ICP Individual Project/src/routes.csv";
+    static String airlinesFilePath = "airlines.csv";
+    static String airportsFilePath = "airports.csv";
+    static String routesFilePath = "routes.csv";
 
     private final static File airlines = new File(airlinesFilePath);
     private final static File airports = new File(airportsFilePath);
