@@ -1,10 +1,15 @@
 public class Airline {
 
+    // ----- INSTANCE VARIABLES ------
+    
     private String airlineName;
     private String airlineCode;
     private String airlineID;
     private int noOfStops;
 
+
+    // ----- CONSTRUCTORS ------
+    
     public Airline(String airlineID, String airlineCode) {
         this.airlineID = airlineID;
         this.airlineCode = airlineCode;
@@ -20,6 +25,9 @@ public class Airline {
         this.airlineCode = airlineCode;
     }
 
+
+    // ----- INSTANCE METHODS ------
+    
     /**
      * @return name of airline used for flight
      */
