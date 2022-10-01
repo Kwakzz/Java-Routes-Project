@@ -96,19 +96,18 @@ public class Files {
     // Second line will contain the destination. Accra, Ghana
 
 
-        // city names can be located in the airports.csv file
-        // look for tuple that has the starting point/city
-        // airport ids are also in the airports.csv file
-        // store the airport id in that tuple
+    // city names can be located in the airports.csv file
+    // look for tuple that has the starting point/city
+    // airport ids are also in the airports.csv file
+    // store the airport id in that tuple
 
 
-        // source airport id and destination airport id are in the routes.csv file
-        // look for the tuple that contains the stored airport id as its source airport id [in the routes.csv file]
-        // store the destination airport id and the airline code in that tuple
-        // return to the airports.csv file and look for the tuple that has the destination airport id
-        // store the city name in that tuple
-        // if the city name is not equal to stop city, repeat the process.
+    // source airport id and destination airport id are in the routes.csv file
+    // look for the tuple that contains the stored airport id as its source airport id [in the routes.csv file]
+    // store the destination airport id and the airline code in that tuple
+    // return to the airports.csv file and look for the tuple that has the destination airport id
+    // store the city name in that tuple
+    // if the city name is not equal to stop city, repeat the process.
 
 
 }
-
