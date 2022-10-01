@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.HashMap;
 
@@ -9,6 +8,8 @@ public class Files {
     public Files() throws FileNotFoundException {
     }
 
+    // ----- VARIABLES ------
+    
     static String airlinesFilePath = "airlines.csv";
     static String airportsFilePath = "airports.csv";
     static String routesFilePath = "routes.csv";
@@ -25,10 +26,42 @@ public class Files {
     static ArrayList<ArrayList<String>> airportsAl = new ArrayList<>();
     static ArrayList<ArrayList<String>> routesAL = new ArrayList<>();
 
+    static Scanner airlines_read;
+
+    static {
+        try {
+            airlines_read = new Scanner(new FileInputStream(airlines));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static Scanner airports_read;
+
+    static {
+        try {
+            airports_read = new Scanner(new FileInputStream(airports));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static Scanner routes_read;
+
+    static {
+        try {
+            routes_read = new Scanner(new FileInputStream(routes));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     // ----- METHOD FOR PUTTING TUPLES IN HASHMAPS -----
+
+    /**
+     * puts records in files into Hashmaps
+     */
     public static void putInHashMaps () {
-        // Airlines tuple is below
-        // Airline ID, Name, Alias, IATA code, ICAO code, Callsign, Country, Active
 
         // Airport tuple is below
         // Airport ID, Name, City, Country, IATA code, ICAO code,
@@ -62,36 +95,6 @@ public class Files {
 
     }
 
-    static Scanner airlines_read;
-
-    static {
-        try {
-            airlines_read = new Scanner(new FileInputStream(airlines));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    static Scanner airports_read;
-
-    static {
-        try {
-            airports_read = new Scanner(new FileInputStream(airports));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    static Scanner routes_read;
-
-    static {
-        try {
-            routes_read = new Scanner(new FileInputStream(routes));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
     // Input File's first line will contain the starting point. Winnipeg, Canada
     // Second line will contain the destination. Accra, Ghana
 
@@ -107,7 +110,7 @@ public class Files {
     // store the destination airport id and the airline code in that tuple
     // return to the airports.csv file and look for the tuple that has the destination airport id
     // store the city name in that tuple
-    // if the city name is not equal to stop city, repeat the process.
+    // if the city name is not equal to destination city, repeat the process.
 
 
 }
