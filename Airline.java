@@ -16,10 +16,9 @@ public class Airline {
         this.noOfStops = noOfStops;
     }
 
-    public Airline(String airlineID) {
-        this.airlineID = airlineID;
+    public Airline(String airlineCode) {
+        this.airlineCode = airlineCode;
     }
-
 
 
     public String getAirlineName() {
